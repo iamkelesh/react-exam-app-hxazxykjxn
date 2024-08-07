@@ -11,28 +11,27 @@ function NavBarComp() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
-                        <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Games</NavDropdown.Item>
+                        <Nav.Link href="#all-topics">All topics</Nav.Link>
+                        <Nav.Link href="#create-discussion">Create discusion</Nav.Link>
+                        <Nav.Link href="#login">Login</Nav.Link>
+                        <Nav.Link href="#register">Register</Nav.Link>
+                        <Nav.Link href="#account">Account</Nav.Link>
+                        <NavDropdown title="Theme" id="collapsible-nav-dropdown">
+                            <NavDropdown.Item href="#topics/games">Games</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.3">Movies</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.4">Anime</NavDropdown.Item>
+                            <NavDropdown.Item href="#topics/movies">Movies</NavDropdown.Item>
+                            <NavDropdown.Item href="#topics/anime">Anime</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.2">
+                            <NavDropdown.Item href="#topics/books">
                                 Books
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.5">Manga</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.6">
+                            <NavDropdown.Item href="#topics/manga">Manga</NavDropdown.Item>
+                            <NavDropdown.Item href="#topics/comics">
                                 Comics
                             </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
