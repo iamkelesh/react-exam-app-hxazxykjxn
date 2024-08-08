@@ -6,8 +6,8 @@ import HomeComp from './components/HomeComp'
 import LatestPostsComp from './components/LatestPostsComp'
 import NavBarComp from './components/NavBarComp'
 import SpecificThemeComp from './components/SpecificThemeComp'
-import LoginComp from './components/LoginComp'
-import RegisterComp from './components/RegisterComp'
+import LoginComp from './components/login/LoginComp'
+import RegisterComp from './components/register/RegisterComp'
 
 function App() {
   return (
