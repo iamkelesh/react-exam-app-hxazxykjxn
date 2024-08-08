@@ -10,11 +10,12 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate()
     const [authState, setAuthState] = useState({})
 
-    const registerSubmitHandler = async (name, email, password) => {
-        const result = await register(name, email, password)
+    const registerSubmitHandler = async (data) => {
+        const result = await register(data)
 
         setAuthState(result)
-
+        console.log('AuthState')
+        console.log(authState.accessToken)
         navigate('/')
     }
 

@@ -19,15 +19,6 @@ function RegisterComp() {
     const { registerSubmitHandler } = useContext(AuthContext)
     const { values, onChange, onSubmit } = useForm(registerSubmitHandler, initialValues)
 
-    // const handleSubmit = (event) => {
-    //     const form = event.currentTarget;
-    //     if (form.checkValidity() === false) {
-    //         event.preventDefault();
-    //         event.stopPropagation();
-    //     }
-
-    //     setValidated(true);
-    // };
 
     return (
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
