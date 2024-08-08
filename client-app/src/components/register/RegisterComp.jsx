@@ -4,41 +4,54 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
+import { useContext } from "react";
+import { useForm } from "../../hooks/useForm";
+import AuthContext from '../../contexts/authContext';
 
+const initialValues = {
+    username: '',
+    email: '',
+    password: '',
+    repeatPassword: ''
+}
 function RegisterComp() {
-    const [validated, setValidated] = useState(false);
+    const [validated, setValidated] = useState(false)
+    const { registerSubmitHandler } = useContext(AuthContext)
+    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, initialValues)
 
-    const handleSubmit = (event) => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+    // const handleSubmit = (event) => {
+    //     const form = event.currentTarget;
+    //     if (form.checkValidity() === false) {
+    //         event.preventDefault();
+    //         event.stopPropagation();
+    //     }
 
-        setValidated(true);
-    };
+    //     setValidated(true);
+    // };
 
     return (
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-            <Form noValidate validated={validated} onSubmit={handleSubmit} className="custom-form">
+            <Form noValidate validated={validated} onSubmit={onSubmit} className="custom-form">
 
-                <Form.Group as={Row} controlId="formFullName">
+                <Form.Group as={Row} controlId="username">
                     <Form.Label column sm={4} className="text-center">
-                        Full Name
+                        Username
                     </Form.Label>
                     <Col sm={8}>
                         <Form.Control
                             type="text"
-                            placeholder="Enter full name"
+                            placeholder="Enter username"
                             required
+                            onChange={onChange}
+                            value={values.username}
                         />
                         <Form.Control.Feedback type="invalid">
-                            Please provide your full name.
+                            Please provide your username.
                         </Form.Control.Feedback>
                     </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} controlId="formBasicEmail">
+                <Form.Group as={Row} controlId="email">
                     <Form.Label column sm={4} className="text-center">
                         Email address
                     </Form.Label>
@@ -47,6 +60,8 @@ function RegisterComp() {
                             type="email"
                             placeholder="Enter email"
                             required
+                            onChange={onChange}
+                            value={values.email}
                         />
                         <Form.Control.Feedback type="invalid">
                             Please provide a valid email address.
@@ -54,7 +69,7 @@ function RegisterComp() {
                     </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} controlId="formBasicPassword">
+                <Form.Group as={Row} controlId="password">
                     <Form.Label column sm={4} className="text-center">
                         Password
                     </Form.Label>
@@ -64,13 +79,16 @@ function RegisterComp() {
                             placeholder="Password"
                             required
                             minLength="6"
+                            onChange={onChange}
+                            value={values.password}
                         />
                         <Form.Control.Feedback type="invalid">
                             Please provide a password with at least 6 characters.
                         </Form.Control.Feedback>
                     </Col>
                 </Form.Group>
-                <Form.Group as={Row} controlId="formRepeatPassword">
+
+                <Form.Group as={Row} controlId="repeatPassword">
                     <Form.Label column sm={4} className="text-center">
                         Repeat Password
                     </Form.Label>
@@ -80,6 +98,9 @@ function RegisterComp() {
                             placeholder="Password"
                             required
                             minLength="6"
+                            onChange={onChange}
+                            value={values.repeatPassword}
+
                         />
                         <Form.Control.Feedback type="invalid">
                             Please repeat password.

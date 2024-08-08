@@ -3,14 +3,14 @@ import { useState } from "react";
 export const useForm = (submitHandler, initialValues) => {
     const [values, setValues] = useState(initialValues)
 
-    const changeHandler = (e) => {
-        setValues(values => ({
-            ...values,
-            [e.target.name]: e.target.value
+    const onChange = (e) => {
+        setValues(x => ({
+            ...x,
+            [e.target.id]: e.target.value
         }))
     }
 
-    const submitHandler = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault()
 
         submitHandler(values)
@@ -18,7 +18,7 @@ export const useForm = (submitHandler, initialValues) => {
 
     return ({
         values,
-        changeHandler,
-        submitHandler
+        onChange,
+        onSubmit
     })
 }
