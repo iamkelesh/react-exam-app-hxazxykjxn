@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -6,17 +6,6 @@ import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
 
 function RegisterComp() {
-  const [validated, setValidated] = useState(false);
-
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    setValidated(true);
-  };
 
   return (
     <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
