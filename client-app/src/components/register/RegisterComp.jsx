@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 function RegisterComp() {
     return (
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-            <Form noValidate validated={validated}  className="custom-form">
+            <Form noValidate className="custom-form">
 
                 <Form.Group as={Row} controlId="username">
                     <Form.Label column sm={4} className="text-center">
