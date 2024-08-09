@@ -9,7 +9,7 @@ import { useForm } from "../../hooks/useForm";
 import AuthContext from '../../contexts/authContext';
 
 const initialValues = {
-    username: '',
+    fullName: '',
     email: '',
     password: '',
     repeatPassword: ''
@@ -24,20 +24,20 @@ function RegisterComp() {
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
             <Form noValidate validated={validated} onSubmit={onSubmit} className="custom-form">
 
-                <Form.Group as={Row} controlId="username">
+                <Form.Group as={Row} controlId="fullName">
                     <Form.Label column sm={4} className="text-center">
-                        Username
+                        Full Name
                     </Form.Label>
                     <Col sm={8}>
                         <Form.Control
                             type="text"
-                            placeholder="Enter username"
+                            placeholder="Enter full name"
                             required
                             onChange={onChange}
-                            value={values.username}
+                            value={values.fullName}
                         />
                         <Form.Control.Feedback type="invalid">
-                            Please provide your username.
+                            Please provide your full name.
                         </Form.Control.Feedback>
                     </Col>
                 </Form.Group>

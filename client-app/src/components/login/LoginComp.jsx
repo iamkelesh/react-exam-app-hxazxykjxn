@@ -4,25 +4,28 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
+import { useContext } from "react";
+import { useForm } from "../../hooks/useForm";
+import AuthContext from '../../contexts/authContext';
+
+
+const initialValues = {
+  email: '',
+  password: '',
+}
 
 function RegisterComp() {
   const [validated, setValidated] = useState(false);
+  const { loginSubmitHandler } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useForm(loginSubmitHandler, initialValues);
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
 
-    setValidated(true);
-  };
 
   return (
     <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-      <Form noValidate validated={validated} onSubmit={handleSubmit} className="custom-form">
+      <Form noValidate validated={validated} onSubmit={onSubmit} className="custom-form">
 
-        <Form.Group as={Row} controlId="formBasicEmail">
+        <Form.Group as={Row} controlId="email">
           <Form.Label column sm={4} className="text-center">
             Email address
           </Form.Label>
@@ -31,6 +34,8 @@ function RegisterComp() {
               type="email"
               placeholder="Enter email"
               required
+              value={values.email}
+              onChange={onChange}
             />
             <Form.Control.Feedback type="invalid">
               Please provide a valid email address.
@@ -38,7 +43,7 @@ function RegisterComp() {
           </Col>
         </Form.Group>
 
-        <Form.Group as={Row} controlId="formBasicPassword">
+        <Form.Group as={Row} controlId="password">
           <Form.Label column sm={4} className="text-center">
             Password
           </Form.Label>
@@ -48,6 +53,8 @@ function RegisterComp() {
               placeholder="Password"
               required
               minLength="6"
+              value={values.password}
+              onChange={onChange}
             />
             <Form.Control.Feedback type="invalid">
               Please provide a password with at least 6 characters.

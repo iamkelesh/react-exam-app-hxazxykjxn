@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch Brave against localhost",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:5173",
+        "webRoot": "${workspaceFolder}/src",
+        "runtimeExecutable": "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe",
+        "sourceMaps": true,
+        "pathMapping": {
+          "/src": "${workspaceFolder}/src"
+        }
+      }
+    ]
+  }

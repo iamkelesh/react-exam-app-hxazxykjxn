@@ -1,6 +1,6 @@
 import { createContext } from "react"
 import { useNavigate } from "react-router"
-import { register } from "../services/authServices"
+import { login, register } from "../services/authServices"
 import { useState } from "react"
 
 const AuthContext = createContext()
@@ -12,17 +12,22 @@ export const AuthProvider = ({ children }) => {
 
     const registerSubmitHandler = async (data) => {
         const result = await register(data)
+        setAuthState(result)
+        navigate('/')
+    }
+
+    const loginSubmitHandler = async (data) => {
+        const result = await login(data)
 
         setAuthState(result)
-        console.log('AuthState')
-        console.log(authState.accessToken)
-        navigate('/')
     }
 
     const values = {
         registerSubmitHandler,
-        isAuthenticated: Boolean(authState.accessToken),
-        username: authState.username,
+        loginSubmitHandler,
+        authState,
+        isAuthenticated: !!authState.accessToken,
+        fullName: authState.fullName,
         email: authState.email,
         userId: authState._id,
 

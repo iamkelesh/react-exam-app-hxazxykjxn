@@ -1,7 +1,7 @@
 const requester = async (method, url, data) => {
     let options = {}
-    console.log(data)
-    
+    // console.log(data)
+
     if (data) {
         options.body = JSON.stringify(data)
         options.headers = {
@@ -11,13 +11,13 @@ const requester = async (method, url, data) => {
     }
 
     let response = await fetch(url, { method, ...options })
-    console.log(response)
+    // console.log(response)
     if (response.status === 204) {
         return {};
     }
 
     let result = await response.json()
-
+    // console.log(result.email)
     if (!response.ok) {
         throw result;
     }
